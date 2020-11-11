@@ -1,0 +1,134 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- top left plus button to add more cards -->
+<!-- this is basically the nav bar -->
+<div class ="newCardWrapper">
+    <mat-card class="addNewCard" id="navCard">
+        <!-- <mat-card-actions> -->
+            <form (ngSubmit)="addCard()">
+                <button mat-button (click)="saveCardPositions()">xy☑ </button>
+                <button mat-button (click)="repositionCards()">xy↩ </button>
+                <input class="newtaskinput" id="newCardInput" type="text" placeholder="+">
+                <span style="padding-right:20px;"> </span>
+                <a href="#" id="darkred" (click)="chooseColor('darkred')" class="colorLinks"
+                    style="background-color: #512920 ;"> ☐ </a>
+                <a href="#" id="brownish" (click)="chooseColor('brownish')" class="colorLinks"
+                    style="background-color: #513629 ;"> ☐ </a>
+                <a href="#" id="tan" (click)="chooseColor('tan')" class="colorLinks"
+                    style="background-color: #514029 ;"> ☐ </a>
+                <a href="#" id="yellowytan" (click)="chooseColor('yellowytan')" class="colorLinks"
+                    style="background-color: #514929 ;"> ☐ </a>
+                <a href="#" id="olivedrab" (click)="chooseColor('olivedrab')" class="colorLinks"
+                    style="background-color: #505129 ;"> ☐ </a>
+                <a href="#" id="armygreen" (click)="chooseColor('armygreen')" class="colorLinks"
+                    style="background-color: #4a5129 ;"> ☐ </a>
+                <a href="#" id="jungle" (click)="chooseColor('jungle')" class="colorLinks"
+                    style="background-color: #3f5129 ;"> ☐ </a>
+                <a href="#" id="minecraftocean" (click)="chooseColor('minecraftocean')" class="colorLinks"
+                    style="background-color: #295133 ;"> ☐ </a>
+                <a href="#" id="aquagreen" (click)="chooseColor('aquagreen')" class="colorLinks"
+                    style="background-color: #29513e ;"> ☐ </a>
+                <a href="#" id="nantesblue" (click)="chooseColor('nantesblue')" class="colorLinks"
+                    style="background-color: #294f51 ;"> ☐ </a>
+                <a href="#" id="cozyprussian" (click)="chooseColor('cozyprussian')" class="colorLinks"
+                    style="background-color: #294251 ;"> ☐ </a>
+                <a href="#" id="denimgrape" (click)="chooseColor('denimgrape')" class="colorLinks"
+                    style="background-color: #293751 ;"> ☐ </a>
+                <a href="#" id="lazygrape" (click)="chooseColor('lazygrape')" class="colorLinks"
+                    style="background-color: #292f51 ;"> ☐ </a>
+                <a href="#" id="limpgrape" (click)="chooseColor('limpgrape')" class="colorLinks"
+                    style="background-color: #2e2951 ;"> ☐ </a>
+                <a href="#" id="purpledawn" (click)="chooseColor('purpledawn')" class="colorLinks"
+                    style="background-color: #3b2951 ;"> ☐ </a>
+                <a href="#" id="desertpurple" (click)="chooseColor('desertpurple')" class="colorLinks"
+                    style="background-color: #482951 ;"> ☐ </a>
+                <a href="#" id="grandmascurtains" (click)="chooseColor('grandmascurtains')" class="colorLinks"
+                    style="background-color: #512941 ;"> ☐ </a>
+                <a href="#" id="rustmauve" (click)="chooseColor('rustmauve')" class="colorLinks"
+                    style="background-color: #512931 ;"> ☐ </a>
+                <!-- saving the below if i needed for a different backend implmentation -->
+                <!-- <button mat-button (click)="loadData()">load⬆ </button> 
+                <button mat-button (click)="saveData()">dl⬇ </button> -->
+
+                <!-- hiding the submit button, needed to enable ENTER press submission -->
+                <button type="submit" style="display:none;">+</button>
+                
+            </form>
+
+        <!-- </mat-card-actions> -->
+    </mat-card>
+</div>
+
+<!-- main wrapper -->
+<div class="container-fluid">
+    
+    <div class="row">
+        <div class="col" 
+            *ngFor="let card of cards; let cardElement = index;" 
+            [attr.id]="'col'+cardElement"
+            cdkDrag>
+            <!-- ngfor cards: spit out cards from array-->
+            <mat-card class="taskcard" [attr.id]="'card'+cardElement">
+                <mat-card-content>
+                    <!-- lay out array of tasks from each card -->
+                    <p>{{ card.title }} <a href='#' class="delBtn" (click)="deleteCard(cardElement)">--🗑</a></p> 
+                    <form (ngSubmit)="addTask(cardElement)">
+                        <ol>
+                            <li *ngFor="let task of card.tasks; let taskElement = index;" 
+                                [ngClass]="{'completed': task.completed != '', 'undo':task.completed == '' }"
+                                (click)="completeTask(taskElement, cardElement)"> 
+                                {{ task.description }} </li>
+                            <input class="newtaskinput" [attr.id]="'input'+cardElement" type="text">
+                        </ol>
+                        <!-- hiding the submit button, needed to enable ENTER press submission -->
+                        <button type="submit" style="display:none;">+</button>
+                    </form>
+
+                </mat-card-content>
+                <mat-card-actions>
+                    <!-- plus sign to add tasks -->
+                    <!-- <button id="basic" type="button" mat-button (click)="addTask()">+</button> -->
+                    
+                      
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

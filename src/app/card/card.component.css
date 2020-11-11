@@ -1,0 +1,74 @@
+input{
+    background-color: inherit;
+    color:inherit;
+}
+
+.completed {
+    text-decoration: line-through;
+    background-color: rgb(39, 39, 39);
+}
+
+.addNewCard a{
+    display:inline-block;
+    color:white;
+}
+.addNewCard a:hover{
+    color:red;
+}
+
+.delBtn{
+    color:inherit;
+}
+.delBtn:hover{
+    color:red;
+}
+
+.undo {
+    text-decoration: none;
+    background-color:inherit;
+}
+
+.container-fluid{
+    padding-left:3rem;
+}
+.col{
+    position:absolute;
+}
+.newtaskinput{
+    border: none;
+    border-bottom: 1px solid rgb(212, 212, 212);
+}
+
+.addNewCard{
+    max-height: 50px;
+}
+
+.newCardWrapper{
+    
+    padding-bottom: 2rem;
+}
+
+.newCardWrapper input{
+    width:10rem;
+}
+
+.taskcard{
+    max-width: 100%;
+}
+
+.taskcard input{
+    max-width: 100%;
+}
+
+.taskcard p{
+    opacity: 50%;
+}
+
+.col{
+    max-width:20%;
+}
+
+.mat-card{
+    color:white;
+    background-color: black;
+}
